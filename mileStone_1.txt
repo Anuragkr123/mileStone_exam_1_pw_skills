@@ -1,0 +1,767 @@
+*******Milestone 1 Assiggnment all question raap in one section**********
+
+Q1.Password validator
+const readlineSync = require('readline-sync');
+let password = "pw_skills123";
+let enter_password;
+let re_enter_password = 0;
+while(enter_password != password){
+    re_enter_password =  re_enter_password + 1;
+enter_password = readlineSync.question("Enter the password :");
+if(enter_password == password){
+    console.log("Password Matched. Password validation Successful.");
+}
+else{
+    console.log("Password didn't match. Password validation unsuccessful.")
+    console.log("Please re_enter the password: ");
+}
+}
+
+Q2.Calculator
+const readlineSync = require('readline-sync');
+let num1 = readlineSync.question("Enter the first number:");
+num1 = Number.parseInt(num1);
+let num2 = readlineSync.question("Enter the second number:");
+num2 = Number.parseInt(num2);
+const operator = readlineSync.question("Enter the operator(+, -, *, /):");
+let result;
+switch(operator){
+    case '+':
+        result = num1 + num2;
+        break;
+    case '-':
+        result = num1 - num2;
+        break;
+    case '*':
+        result = num1 * num2;
+        break;
+    case '/':
+        result = num1 / num2;
+        break;
+    default:
+        console.log("Invalid Entry");
+        return;
+}
+if(result !== undefined){
+    console.log(`Result:${result}`);
+}
+
+Q2.Calculator making using function
+function calculator(){
+const readlineSync = require('readline-sync');
+let num1 = readlineSync.question("Enter the first number:");
+num1 = Number.parseInt(num1);
+let num2 = readlineSync.question("Enter the second number:");
+num2 = Number.parseInt(num2);
+const operator = readlineSync.question("Enter the operator(+, -, *, /):");
+    let result;
+    switch(operator){
+        case '+':
+            result = num1 + num2;
+            break;
+        case '-':
+            result = num1 - num2;
+            break;
+        case '*':
+            result = num1 * num2;
+            break;
+        case '/':
+            result = num1 / num2;
+            break;
+        default:
+            console.log("Invalid Entry");
+            return;
+    }
+    console.log(`Result:${result}`);
+}
+calculator();
+
+Q3.Color Mixer
+
+function colorMixer(){
+    const readlineSync = require('readline-sync');
+    const color1 = readlineSync.question("Enter first color:");
+    const color2 = readlineSync.question("Enter second color:");
+
+    let resultingColor;
+    switch(color1){
+        case 'red':
+            switch(color2){
+                case 'blue':
+                    resultingColor = 'purple';
+                    break;
+                case 'yellow':
+                    resultingColor = 'orange';
+                    break;
+                default:
+                    console.log('Invalid color combination');
+                    return;
+            }
+            break;
+            case 'blue':
+                if(color2 === 'yellow'){
+                    resultingColor = 'green';
+                }
+                else{
+                    console.log('Invalid color combination');
+                    return;
+                }
+                break;
+            default:
+                console.log('Invalid color combination.');
+                return;
+    }
+    console.log('Resulting color:', resultingColor);
+}
+
+colorMixer();
+
+Q4.Highest Marks
+function findHighestMarks(marks) {
+  const highestMarks = marks.length > 0 ? Math.max(...marks) : 0;
+  return highestMarks;
+}
+
+const marks = [85, 92, 78, 90, 88];
+
+const highestMarks = findHighestMarks(marks);
+
+console.log(
+  `The highest marks scored by any student in the class: ${highestMarks}`
+);
+
+Q5.Capitalize first letter of the name
+const readlineSync = require('readline-sync');
+Function to capitalize first letter of a string
+function capitalizeFirstLetter(name){
+    if(name.length === 0){
+        return ""; //return an empty string if the name is empty
+    }
+    const firstLetter = name[0].toUpperCase();// Convert the first letter to uppercase.
+    const restOfName = name.slice(1);// Extract the rest of the name (from index 1 till the end)
+    return firstLetter + restOfName;// Concatenate the capitalized first letter with the rest of the name
+}
+
+// Get user's name input
+const userName = readlineSync.question("Enter your name :");
+//capitalize the first letter using the function
+const capitalizedUserName = capitalizeFirstLetter(userName);
+// Display the name
+console.log("Your name is :" + capitalizedUserName);
+
+Q.6 Vowel Counter
+const readlineSync = require('readline-sync');
+function countVowels(name){
+    const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let vowelCount = 0;
+    for(let i = 0; i < name.length; i++){
+        if(vowels.includes(name[i])){
+            vowelCount++;
+        }
+    }
+    return vowelCount;
+}
+const personName = readlineSync.question("Enter your Name:");
+const numberOfVowels = countVowels(personName);
+console.log(`The number of vowels in the name "${personName}" is ${numberOfVowels}`);
+
+Q.7 Remove Duplicates
+function removeDuplicatesFromCart(cart) {
+    const uniqueItems = [];
+    const itemIds = new Set();
+
+    for (const item of cart) {
+        if (!itemIds.has(item.id)) {
+            uniqueItems.push(item);
+            itemIds.add(item.id);
+        }
+    }
+
+    return uniqueItems;
+}
+
+// Example cart with duplicate items
+const customerCart = [
+    { id: 1, name: "Item A", price: 10 },
+    { id: 2, name: "Item B", price: 20 },
+    { id: 1, name: "Item A", price: 10 }, // Duplicate
+    { id: 3, name: "Item C", price: 15 },
+    { id: 2, name: "Item B", price: 20 }, // Duplicate
+];
+
+const newCart = removeDuplicatesFromCart(customerCart);
+console.log(newCart);
+
+Q.8 Inverted right angle triangle
+const readlineSync = require('readline-sync');
+function printInvertedRightAngledTriangle(i) {
+    for (let row = i; row >= 1; row--) {
+      let pattern = '';
+      for (let j = 1; j <= row; j++) {
+        pattern += '*';
+      }
+      console.log(pattern);
+    }
+  }
+
+  // Example usage:
+  const numRows = readlineSync.question("Enter no of rows:");
+  printInvertedRightAngledTriangle(numRows);
+
+Q.9 Check for divisibility
+
+function divisibilityTest(numbersArray){
+    for(let i = 0; i < numbersArray.length; i++){
+        const num = numbersArray[i];
+        if(num % 2 === 0){
+            continue;
+        }
+        if(num % 3 === 0){
+            console.log(num)
+        }
+    }
+}
+
+const numbers = [3, 6, 9, 12, 15, 18, 21];
+divisibilityTest(numbers);
+
+Q.10 Correct a bug
+function doubleItemQuantities(cart) {
+    const doubledCart = cart.map(item => {
+      return { ...item, quantity: item.quantity * 2 };
+    });
+    return doubledCart;
+  }
+
+  // Example usage
+  const cart = [
+    { itemId: 1, quantity: 3 },
+    { itemId: 2, quantity: 5 },
+    { itemId: 3, quantity: 2 }
+  ];
+
+  const correctedCart = doubleItemQuantities(cart);
+  console.log(correctedCart);
+
+Q.11 Unit converter
+const readlineSync = require('readline-sync');
+function celsiusToFahrenheit(celsius) {
+  //formula to celsius into farenheit
+  const farenheit = (celsius * 9) / 5 + 32;
+  return farenheit;
+}
+
+const celsiusTemperature = parseFloat(readlineSync.question("Enter your temperatur:"));
+const farenheitTemperature = celsiusToFahrenheit(celsiusTemperature);
+console.log(`${celsiusTemperature} degree celsius is equal to ${farenheitTemperature} degrees fahrenheit.`);
+
+Q.12 Calculate rental cost
+const readlineSync = require('readline-sync');
+function calculateRentalCost(daysRented, carType){
+  let rentalCost = 0;
+
+  switch (carType.toLowerCase()){
+    case 'economy':
+      rentalCost = 4000; //Rs 4000 per day
+      break;
+    case 'midsize':
+      rentalCost = 10000; // Rs 10000 per day
+      break;
+    case 'luxury':
+    rentalCost = 20000;// Rs. 20,000 per day
+    break;
+    default:
+      return 'invalid car type';
+  }
+  const totalCost = rentalCost * daysRented;
+  return `Total rental cost for ${daysRented} days of ${carType} car: Rs. ${totalCost}/-`;
+}
+const daysRented = readlineSync.question("Enter no days:");
+const carType = readlineSync.question("Enter car type that you want:");
+console.log(calculateRentalCost(daysRented,carType));
+
+
+Q.13 Bill Splitter 
+const readlineSync = require('readline-sync')
+function calculateBillPerPerson(dishCosts, numberOfPeople) {
+  // Calculate the total bill by summing up the dish costs
+  const totalBill = dishCosts.reduce((acc, cost) => acc + cost, 0);
+
+  // Calculate the bill per person by dividing the total bill by the number of people
+  const billPerPerson = totalBill / numberOfPeople;
+
+  // Create an object to store the results
+  const billInfo = {
+    totalBill: totalBill,
+    billPerPerson: billPerPerson,
+  };
+
+  return billInfo;
+}
+
+// Example usage:
+const dishCosts = [25.50, 15.75, 10.25]; // Array of dish costs
+const numberOfPeople = 4; // Number of people sharing the bill
+
+const result = calculateBillPerPerson(dishCosts, numberOfPeople);
+
+console.log("Total Bill: $" + result.totalBill.toFixed(2));
+console.log("Bill per Person: $" + result.billPerPerson.toFixed(2));
+
+Q.14 Calculate the final oreder price 
+const calculateTotalCost = (cart) =>{
+  //Initialize the total cost to 0
+  let totalCost = 0;
+
+  //Iterate through each item in the cart
+  for(const item of cart){
+    //Calculate the cost for the current item ( unit price * quantity)
+    const itemCost = item.unitPrice * item.quantity;
+
+    // Add the item's cost to the total cost
+    totalCost += itemCost;
+  }
+
+  return totalCost;
+};
+
+const cart = [
+  { unitPrice: 10, quantity: 2},
+  { unitPrice: 5, quantity:3},
+  { unitPrice: 8, quantity:1}
+];
+const totalCost = calculateTotalCost(cart);
+console.log("Total Cost: Rs." + totalCost.toFixed(2))
+
+same question in which user can enter unitprice and quantity
+const readline = require('readline');
+
+// Create an interface for reading user input
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+// Initialize an empty cart array to store items
+const cart = [];
+
+// Function to calculate the total cost of items in the cart
+const calculateTotalCost = (cart) => {
+  let totalCost = 0;
+  for (const item of cart) {
+    const itemCost = item.unitPrice * item.quantity;
+    totalCost += itemCost;
+  }
+  return totalCost;
+};
+
+// Function to add an item to the cart
+const addItemToCart = () => {
+  rl.question('Enter the unit price of the item: ', (unitPrice) => {
+    rl.question('Enter the quantity of the item: ', (quantity) => {
+      const item = {
+        unitPrice: parseFloat(unitPrice),
+        quantity: parseInt(quantity),
+      };
+      cart.push(item);
+      console.log('Item added to cart.');
+      rl.question('Do you want to add another item? (yes/no): ', (answer) => {
+        if (answer.toLowerCase() === 'yes') {
+          addItemToCart();
+        } else {
+          const totalCost = calculateTotalCost(cart);
+          console.log('Total Cost: $' + totalCost.toFixed(2));
+          rl.close();
+        }
+      });
+    });
+  });
+};
+
+// Start the program by adding items to the cart
+addItemToCart();
+
+Q.15 Calculate the percentage of the discount
+const readlineSync = require('readline-sync');
+const calculateDiscountPercentage = (originalPrice, discountedPrice) => {
+  if(originalPrice <=0 || discountedPrice <=0 || originalPrice <= discountedPrice){
+    throw new Error("Invalid input. Original price must be greater than discounted price.");
+  }
+  const discountAmount = originalPrice - discountedPrice;
+  const discountPercentage = (discountAmount / originalPrice) * 100;
+  return parseFloat(discountPercentage.toFixed(2));
+};
+
+const originalPrice = readlineSync.question("Enter original price:");
+const discountedPrice = readlineSync.question("Discounted price :");
+const discountPercentage = calculateDiscountPercentage(originalPrice, discountedPrice);
+console.log(`You save ${discountPercentage}% - $${originalPrice - discountedPrice}`);
+
+Q.16 Generate a random number
+
+const randomGenerator = (() => {
+  const min = 1;
+  const max = 100;
+
+  // Generate a random number between min and max
+  const getRandomNumber = () => Math.floor(Math.random() * (max - min + 1)) + min;
+
+  return getRandomNumber;
+})();
+
+const randomNumber = randomGenerator();
+
+console.log(`Random Number: ${randomNumber}`);
+
+
+Q.17 Build a banking application
+const readlineSync = require("readline-sync")
+Initialize an empty customer account object 
+const customerAccount = {};
+
+Function to update customer details
+function updateCustomerDetails(){
+  const name = readlineSync.question("Enter customer name:");
+  const balance = parseFloat(readlineSync.question("Enter initial balance:"));
+
+  if(isNaN(balance)){
+    console.log("Invalid balance input. Please enter a valid number.");
+    return;
+  }
+
+  customerAccount.name = name;
+  customerAccount.balance = balance;
+
+  console.log(`Account holder: ${customerAccount.name}`);
+  console.log(`Initial balance: Rs.${customerAccount.balance}`);
+}
+
+function to deposit money
+function deposit(){
+  const amount = parseFloat(readlineSync.question("Enter deposit amount:"));
+
+  if(isNaN(amount) || amount <= 0){
+    console.log("Invalid deposit amount. Amount must be greater than 0.");
+    return;
+  }
+  customerAccount.balance += amount;
+  console.log(`Deposited Rs.${amount}. New balance: Rs.${customerAccount.balance}`);
+}
+
+Function to withdraw money
+function withdraw(){
+  const amount = parseFloat(readlineSync.question("Enter withdrawl amount:"));
+
+  if(isNaN(amount) || amount <= 0 || amount > customerAccount.balance){
+    console.log("Invalid withdrawl amount or Insufficient balance.");
+    return;
+  }
+  customerAccount.balance -= amount;
+  console.log(`Withdrawn Rs.${amount}. New balance: Rs.${customerAccount.balance}`);
+}
+
+Interactive menu 
+function startBankingApp(){
+  updateCustomerDetails();
+
+  while(true){
+    const choice = readlineSync.question("Choose an option:\n1. Deposited\n2. Withdraw\n3. Exit");
+
+    switch(choice){
+      case "1":
+        deposit();
+        break;
+      case "2":
+        withdraw();
+        break;
+      case "3":
+        console.log("Exiting banking app.");
+        return;
+      default:
+        console.log("Invalid choice. Please select a valid option.");
+    }
+  }
+}
+// start the banking application
+startBankingApp();
+
+Q.18 Change Text on Button click 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Heading Text</title>
+</head>
+<body>
+    <h1 id="main-heading">The most affordable learning platform</h1>
+    <button onclick="toggleHeadingText()">Toggle Text</button>
+    <script>
+        function toggleHeadingText() {
+            let heading = document.getElementById('main-heading');
+            if (heading.textContent === 'The most affordable learning platform') {
+                heading.textContent = 'PW Skills';
+            } else {
+                heading.textContent = 'The most affordable learning platform';
+            }
+        }
+    </script>
+</body>
+</html>
+
+Q.19 Validate Password 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form Validation</title>
+    <script>
+        function validateForm() {
+            // Get the values from the input fields
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            
+            // Regular expression to validate email format
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Check if email is valid and password has minimum length
+            if (emailRegex.test(email) && password.length >= 8) {
+                // Display a success message in green
+                var message = document.getElementById('message');
+                message.style.color = 'green';
+                message.textContent = 'Valid email and password!';
+                return true; // Allow form submission
+            } else {
+                // Display an error message in red
+                var message = document.getElementById('message');
+                message.style.color = 'red';
+                message.textContent = 'Invalid email or password!';
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <form onsubmit="return validateForm()">
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="message"></p>
+</body>
+</html>
+
+
+Q.20 Dynamically Adding list items to an ordered list 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add List Items</title>
+    <script>
+        // Initialize an array of pre-existing list items
+        var itemList = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+        var currentIndex = 0;
+
+        // Function to add a new list item
+        function addListItem() {
+            let itemListElement = document.getElementById('itemList');
+            
+            // Check if there are remaining items in the array
+            if (currentIndex < itemList.length) {
+                let newItem = document.createElement('li');
+                newItem.textContent = itemList[currentIndex];
+                itemListElement.appendChild(newItem);
+                currentIndex++;
+            } else {
+                // All items have been added
+                alert("All items have been added!");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Add List Items</h1>
+    <ul id="itemList">
+        <!-- Existing list items will be added here -->
+    </ul>
+    <button onclick="addListItem()">Add Item</button>
+</body>
+</html>
+
+
+Q.21 ToDo App 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple To-Do App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #todoList {
+            list-style: none;
+            padding: 0;
+        }
+        #todoList li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        #todoList button {
+            background-color: #ff6961;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple To-Do App</h1>
+        <div>
+            <input type="text" id="taskInput" placeholder="Enter a new task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <ul id="todoList"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('taskInput');
+            const taskText = taskInput.value.trim();
+
+            if (taskText !== '') {
+                const todoList = document.getElementById('todoList');
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <span>${taskText}</span>
+                    <button onclick="removeTask(this)">Remove</button>
+                `;
+                todoList.appendChild(listItem);
+                taskInput.value = '';
+            }
+        }
+
+        function removeTask(button) {
+            const listItem = button.parentNode;
+            const todoList = document.getElementById('todoList');
+            todoList.removeChild(listItem);
+        }
+    </script>
+</body>
+</html>
+
+
+Q.23 Change the color on click 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Background Color</title>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 50px;
+        transition: background-color 0.5s;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <button id="changeColorButton">Change Color</button>
+
+    <script>const colors = ["#FF5733", "#33FF57", "#5733FF", "#33A1FF", "#FF33D1", "#FFD133"];
+
+        function getRandomColor() {
+            const randomIndex = Math.floor(Math.random() * colors.length);
+            return colors[randomIndex];
+        }
+        
+        document.addEventListener("DOMContentLoaded", function () {
+            const changeColorButton = document.getElementById("changeColorButton");
+            const body = document.body;
+        
+            changeColorButton.addEventListener("click", function () {
+                const randomColor = getRandomColor();
+                body.style.backgroundColor = randomColor;
+            });
+        });
+        </script>
+</body>
+</html>
+
+
+Q.24 Text Highlighting
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Long Words</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <p id="paragraph">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada lectus in mi facilisis, at sagittis velit bibendum. Aliquam erat volutpat.
+    </p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const paragraph = document.getElementById("paragraph");
+            const text = paragraph.innerHTML;
+            const words = text.split(/\s+/);
+
+            for (let i = 0; i < words.length; i++) {
+                const word = words[i];
+
+                if (word.length > 8) {
+                    words[i] = '<span class="highlight">' + word + '</span>';
+                }
+            }
+
+            paragraph.innerHTML = words.join(" ");
+        });
+    </script>
+</body>
+</html>
