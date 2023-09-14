@@ -675,7 +675,83 @@ Q.21 ToDo App
 </body>
 </html>
 
+Q.22 Progress Bar 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>progress bar</title>
+    <!-- link css file -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        #progressContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background-color: red;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background-color: #1946a8;
+            width: 0%;
+            transition: width 0.2s ease-in-out;
+        }
+
+        .box {
+            display: grid;
+            border: 1px solid black;
+            grid-template-rows: repeat(5, 100px);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progressContainer">
+        <div id="progress-bar"></div>
+    </div>
+    <section class="box box1"></section>
+    <section class="box box2"></section>
+    <section class="box box3"></section>
+    <section class="box box4"></section>
+    <section class="box box5"></section>
+    <section class="box box6"></section>
+    <section class="box box1"></section>
+    <section class="box box2"></section>
+    <section class="box box3"></section>
+    <section class="box box4"></section>
+    <section class="box box5"></section>
+    <section class="box box6"></section>
+    <script>
+        // Get the progress bar element
+        const progressBar = document.getElementById('progress-bar');
+
+        // Add an event listener to the window object to listen for the scroll event
+        window.addEventListener('scroll', function () {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+            // Update the progress bar to match the scroll percentage
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+    </script>
+</body>
+
+</html>
 Q.23 Change the color on click 
 
 <!DOCTYPE html>
@@ -762,6 +838,71 @@ Q.24 Text Highlighting
 
             paragraph.innerHTML = words.join(" ");
         });
+    </script>
+</body>
+</html>
+
+Q.25 Move the Image
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Movement</title>
+    <style>
+        #container {
+            position: relative;
+            width: 400px; /* Adjust the container width as needed */
+            height: 400px; /* Adjust the container height as needed */
+            overflow: hidden;
+        }
+        
+        #image {
+            position: absolute;
+            width: 50px; /* Adjust the image size as needed */
+            height: 50px; /* Adjust the image size as needed */
+            background-color: blue; /* Change this to your image source */
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="image"></div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const container = document.getElementById("container");
+            const image = document.getElementById("image");
+        
+            let x = 0; // Initial horizontal position
+            let y = 0; // Initial vertical position
+            const step = 10; // Move by 10 pixels at a time (you can adjust this)
+        
+            function updateImagePosition() {
+                image.style.left = x + "px";
+                image.style.top = y + "px";
+            }
+        
+            document.addEventListener("keydown", function (event) {
+                switch (event.key) {
+                    case "ArrowLeft":
+                        x -= step;
+                        break;
+                    case "ArrowRight":
+                        x += step;
+                        break;
+                    case "ArrowUp":
+                        y -= step;
+                        break;
+                    case "ArrowDown":
+                        y += step;
+                        break;
+                }
+                updateImagePosition();
+            });
+        });
+        
     </script>
 </body>
 </html>
